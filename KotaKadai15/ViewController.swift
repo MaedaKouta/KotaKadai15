@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 }
 
-extension ViewController: SaveNameDelegate {
+extension ViewController: SaveNameViewControllerDelegate {
     func saveName(name: String) {
         checkItems.append(.init(name: name, isChecked: false))
         dismiss(animated: true, completion: nil)

@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol SaveNameDelegate: AnyObject {
+protocol SaveNameViewControllerDelegate: AnyObject {
     func saveName(name: String)
 }
 
 class SaveNameViewController: UIViewController {
 
     @IBOutlet private weak var nameTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
-    weak var delegate: SaveNameDelegate?
+    @IBOutlet private weak var errorLabel: UILabel!
+    weak var delegate: SaveNameViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +23,12 @@ class SaveNameViewController: UIViewController {
     }
 
     @IBAction func didTapSaveButton(_ sender: Any) {
-        if let name = nameTextField.text, !name.isEmpty {
-            delegate?.saveName(name: name)
-        } else {
+        guard let name = nameTextField.text, !name.isEmpty else {
             errorLabel.text = "値が入力されていません"
             return
         }
+
+        delegate?.saveName(name: name)
     }
 
 }
