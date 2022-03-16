@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol SaveNameDelegate: AnyObject {
+protocol SaveNameViewControllerDelegate: AnyObject {
     func saveName(name: String)
 }
 
 class SaveNameViewController: UIViewController {
 
     @IBOutlet private weak var nameTextField: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
-    weak var delegate: SaveNameDelegate?
+    @IBOutlet private weak var errorLabel: UILabel!
+    weak var delegate: SaveNameViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
