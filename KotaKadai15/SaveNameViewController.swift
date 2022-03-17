@@ -23,12 +23,11 @@ class SaveNameViewController: UIViewController {
     }
 
     @IBAction func didTapSaveButton(_ sender: Any) {
-        if let name = nameTextField.text, !name.isEmpty {
-            delegate?.saveName(name: name)
-        } else {
+        guard let name = nameTextField.text, !name.isEmpty else {
             errorLabel.text = "値が入力されていません"
             return
         }
+        delegate?.saveName(name: name)
     }
 
 }
